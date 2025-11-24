@@ -24,45 +24,103 @@
             flex-direction: column;        
             align-items: center;
             justify-content: center;
-            width: 40%;
-            height: 70%;
+            width: 48%;
+            height: 90%;
             text-align: center;
             /*border: 1px solid black;
              border-radius: 1em;
              overflow: hidden; */
-            gap: 1em; 
+            gap: 1.5em; 
         }
         
 
         #instruction-section
         {
             background-color: brown;
-           height: 30%;
+           height: 25%;
            width: 100%;
            border: 1px solid black;
-             border-radius: 1em;
+             border-radius: 0.9em;
              overflow: hidden;
              
+        }
+
+        #instruction-section h2
+        {
+            padding-top: 16px;
         }
 
          #instruction-section p
          {
             font-size: 18px;
-             text-align: justify; 
-             
+             text-align: center; 
+             width: 80%;
+             margin: 0 auto;
          }
 
         #stats-section
         {
            background-color: blue; 
             display: flex;
-            justify-content: space-between;
+            
+            
             width: 100%;
-            height: 15%;
-            font-size: 2em;
+            height: 17%;
+            font-size: 1em;
             border: 1px solid black;
-             border-radius: 0.5em;
+             border-radius: 0.9em;
              overflow: hidden;
+        }
+
+        #stats-left
+        {
+            
+            justify-content: center;
+            align-items: end;
+            background-color: beige;
+            width: 70%;
+            height: 100%;
+            display: flex;
+            gap: 6em;
+            
+        }
+
+       #stats-left > div {
+    padding-bottom: 0.8em; /* space inside, above the bottom border */
+}
+
+
+        #stats-right
+        {
+            background-color: bisque;
+            width: 30%;
+            height: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+    align-items: center;
+    gap: 2em;  
+        }
+
+        .stats-btn
+        {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        #reset-btn
+        {
+            background-color: red;
+            color: white;
+        }
+
+        #difficulty-btn
+        {
+             background-color: white;
         }
 
         #timer
@@ -86,15 +144,20 @@
             height: 30%;
            width: 100%;
            display: flex;
-           flex-direction: column;
-           font-size: 2em;
+           justify-content: center;
+           align-items: center;
+           font-size: 1.5em;
           border: 1px solid black;
-             border-radius: 0.8em;
+             border-radius: 0.6em;
              overflow: hidden;
         }
 
         #game-section p {
-    margin: 0.5em 0 0 0;      
+          
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+    letter-spacing: 2px;
     
 }
 #game-section input {
@@ -109,8 +172,28 @@
             height: 25%;
             width: 100%;
             border: 1px solid black;
-             border-radius: 1em;
+             border-radius: 0.7em;
              overflow: hidden;
+             display: flex;
+             
+        }
+
+        #result-left
+        {
+            background-color: gray;
+            width: 70%;
+            height: 100%;
+        }
+
+        #result-right
+        {
+            background-color:blueviolet;
+            width: 30%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2em;
         }
 
        .underline {
@@ -136,15 +219,32 @@
             
         </div>
         <div id="stats-section">
-            <div id="timer">timer</div>
-            <div id="wpm">wpm</div>
-            <div id="score">score</div>
+            <div id="stats-left">
+                <div id="timer">Time: 0.0s</div>
+                <div id="wpm">WPM: 0/m</div>
+                <div id="score">Accuracy: 0.0%</div>
+            </div>
+
+            <div id="stats-right">
+                <button id="reset-btn" class="stats-btn">RESET</button>
+                <button id="difficulty-btn" class="stats-btn">Normal</button>
+            </div>
+
+            
         </div>
         <div id="game-section">
             <p><span class="underline">T</span>he quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog.</p>
         </div>
         <div id="result-section">
-            results
+      
+            <div id="result-left">
+                <p>Achieve accuracy of 60% to pass</p>
+            </div>
+
+            <div id="result-right">
+                <button id="reset-btn" class="stats-btn">RESET</button>
+                <button id="difficulty-btn" class="stats-btn">Normal</button>
+            </div>
         </div>
     </div>
 </body>
