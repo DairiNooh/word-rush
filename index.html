@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+
+        body,html {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+        #container {
+            /*background-color: red;*/
+            display: flex;
+            flex-direction: column;        
+            align-items: center;
+            justify-content: center;
+            width: 40%;
+            height: 70%;
+            text-align: center;
+            /*border: 1px solid black;
+             border-radius: 1em;
+             overflow: hidden; */
+            gap: 1em; 
+        }
+        
+
+        #instruction-section
+        {
+            background-color: brown;
+           height: 30%;
+           width: 100%;
+           border: 1px solid black;
+             border-radius: 1em;
+             overflow: hidden;
+             
+        }
+
+         #instruction-section p
+         {
+            font-size: 18px;
+             text-align: justify; 
+             
+         }
+
+        #stats-section
+        {
+           background-color: blue; 
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            height: 15%;
+            font-size: 2em;
+            border: 1px solid black;
+             border-radius: 0.5em;
+             overflow: hidden;
+        }
+
+        #timer
+        {
+            display: flex;
+        }
+
+        #wpm
+        {
+            display: flex;
+        }
+        
+        #score
+        {
+            display: flex;
+        }
+
+        #game-section
+        {
+            background-color: yellow;
+            height: 30%;
+           width: 100%;
+           display: flex;
+           flex-direction: column;
+           font-size: 2em;
+          border: 1px solid black;
+             border-radius: 0.8em;
+             overflow: hidden;
+        }
+
+        #game-section p {
+    margin: 0.5em 0 0 0;      
+    
+}
+#game-section input {
+    margin: 2em 0 0 0;      
+    
+}
+
+
+        #result-section
+        {
+            background-color: green;
+            height: 25%;
+            width: 100%;
+            border: 1px solid black;
+             border-radius: 1em;
+             overflow: hidden;
+        }
+
+       .underline {
+  text-decoration: underline;
+  text-decoration-color: red; 
+  text-decoration-thickness: 2px;
+}
+
+
+
+        
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <div id="instruction-section">
+            <h2>Instructions</h2>
+            <p>Type as fast and accurately as you can - reach at least 60% accuracy and finish the required sentences within the time limit to pass.</p>
+
+
+
+            
+        </div>
+        <div id="stats-section">
+            <div id="timer">timer</div>
+            <div id="wpm">wpm</div>
+            <div id="score">score</div>
+        </div>
+        <div id="game-section">
+            <p><span class="underline">T</span>he quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog.</p>
+        </div>
+        <div id="result-section">
+            results
+        </div>
+    </div>
+</body>
+
+</html>
