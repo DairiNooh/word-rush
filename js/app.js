@@ -27,6 +27,8 @@ statsSentenceElement.textContent = 'Sentences Completed: ' + sentencesCompleted 
 const statsAccuracyElement = document.getElementById('stats-accuracy');
 statsAccuracyElement.textContent = 'Accuracy: 0.0%';
 
+const statsWPMElement = document.getElementById('stats-wpm');
+
 let currentSentence = getNextSentence();
 let displayChars = currentSentence.split(""); // NEW: store the actual displayed characters
 
@@ -116,6 +118,7 @@ function handleKeyPressed(e) {
     }
 
     statsAccuracyElement.textContent = 'Accuracy: ' + getAccuracy() + '%';
+    statsWPMElement.textContent = 'WPM: ' + calculateWPM();
 
      // Move forward
     currentIndex++;
@@ -151,59 +154,13 @@ function handleKeyPressed(e) {
     pElement.innerHTML = displayChars.join("");
 }
 
-// function handleKeyPressed(e)
-// {
-
-//   const chars = currentSentence.split("");
-
-//     // check if pressed key matches current char
-//     if (e.key === chars[currentIndex]) {
-//         chars[currentIndex] = `<span class="correct">${chars[currentIndex]}</span>`;
-//     } else {
-//         chars[currentIndex] = `<span class="wrong">${chars[currentIndex]}</span>`;
-//     }
-//   currentIndex++;
-
-//   if(currentIndex >= currentSentence.length)
-//   {
-//     currentIndex = currentSentence.length - 1;
-//     return;
-//   }
-
-//   renderSentence();
-// }
-
-
-
-
-
-
-
-// function getPressedKey(e)
-// {
-//   console.log("You pressed:", e.key);
-// }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
 
 // --- Timer (00.0 format) ---
-let timeLeft = 60.0; 
+let totalTime = 60.0; // this is needed for wpm 
+let timeLeft = totalTime; 
 const timerEl = document.getElementById("timer");
 
 const countdown = setInterval(() => {
@@ -217,6 +174,14 @@ const countdown = setInterval(() => {
         clearInterval(countdown);
     }
 }, 100);
+
+
+function calculateWPM()
+{
+    const elapsedTime = (totalTime - timeLeft) / 60; // minutes
+    if (elapsedTime === 0) return 0; // prevent division by 0
+    return Math.round(totalCorrectCharsInputted / 5 / elapsedTime);
+}
 
 
 
