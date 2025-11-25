@@ -3,7 +3,7 @@ console.log('Hello World!!');
 //
 // Array of sentences
 const sentences = [
-    "The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog.",
+    "The quick brown fox jumps over the lazy dog.",
     "A journey of a thousand miles begins with a single step.",
     "All work and no play makes Jack a dull boy.",
     "Practice makes perfect. Keep trying and never give up.",
@@ -15,7 +15,7 @@ let currentIndex = 0;
 //let currentSentence = getRandomSentence();
 let unusedSentences = [...sentences];
 let sentencesCompleted = 0;
-
+let timeIsUp = false;
 
 
 
@@ -102,6 +102,9 @@ function getAccuracy() {
 
 function handleKeyPressed(e) {
 
+
+
+    
     // Checks weather the key inputted is not a single characater
     // characters liek alt ctrl shift and caps lock and multi char so it will return
     if (e.key.length !== 1) return; 
@@ -131,7 +134,16 @@ function handleKeyPressed(e) {
     if (currentIndex >= plainChars.length)
     {
 
+        //
+
         sentencesCompleted++;
+
+        
+
+        if (unusedSentences.length === 0) {
+        endGame();
+        return;
+    }
 
         currentSentence = getNextSentence();
         currentIndex = 0;
@@ -176,6 +188,8 @@ let countdown = setInterval(() => {
 
     if (timeLeft <= 0) {
         clearInterval(countdown);
+        timeIsUp = true;
+        endGame();
     }
 }, 100);
 
@@ -190,6 +204,8 @@ function startTimer() {
 
         if (timeLeft <= 0) {
             clearInterval(countdown);
+            timeIsUp = true;
+            endGame();
         }
     }, 100);
 }
@@ -219,6 +235,8 @@ function resetGame() {
     sentencesCompleted = 0;
     totalInputtedChars = 0;
     totalCorrectCharsInputted = 0;
+
+    timeIsUp = false;
 
     // Reset stats display
     statsSentenceElement.textContent = 'Sentences Completed: ' + sentencesCompleted + '/' + sentences.length;
@@ -273,7 +291,23 @@ function changeGameDifficulty()
 
 
 
+function endGame()
+{
+    clearInterval(countdown); // stops time
+    
 
+    const finalAccuracy = getAccuracy() || 0;
+
+    if(finalAccuracy >= 60)
+    {
+        pElement.textContent = 'YOU WIN!!';
+    }
+    else
+    {
+        pElement.textContent = 'YOU LOSE!!';
+    }
+
+}
 
 
 
