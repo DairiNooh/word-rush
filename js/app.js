@@ -102,6 +102,8 @@ function getAccuracy() {
 
 function handleKeyPressed(e) {
 
+    if (e.key.length !== 1) return; 
+
     totalInputtedChars++;
     // Don't create new chars — use displayChars
     let plainChars = currentSentence.split("");
