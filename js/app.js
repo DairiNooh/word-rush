@@ -102,6 +102,8 @@ function getAccuracy() {
 
 function handleKeyPressed(e) {
 
+    // Checks weather the key inputted is not a single characater
+    // characters liek alt ctrl shift and caps lock and multi char so it will return
     if (e.key.length !== 1) return; 
 
     totalInputtedChars++;
@@ -165,7 +167,7 @@ let totalTime = 60.0; // this is needed for wpm
 let timeLeft = totalTime; 
 const timerEl = document.getElementById("timer");
 
-const countdown = setInterval(() => {
+let countdown = setInterval(() => {
     timeLeft -= 0.1;
     if (timeLeft < 0) timeLeft = 0;
 
@@ -176,6 +178,22 @@ const countdown = setInterval(() => {
         clearInterval(countdown);
     }
 }, 100);
+
+
+function startTimer() {
+    countdown = setInterval(() => {
+        timeLeft -= 0.1;
+        if (timeLeft < 0) timeLeft = 0;
+
+        const displayTime = timeLeft.toFixed(1).padStart(4, "0");
+        timerEl.textContent = `Time: ${displayTime}`;
+
+        if (timeLeft <= 0) {
+            clearInterval(countdown);
+        }
+    }, 100);
+}
+
 
 
 function calculateWPM()
@@ -192,10 +210,37 @@ console.log(resetButtonElement);
 
 resetButtonElement.addEventListener('click', resetGame);
 
-function resetGame()
-{
-    console.log('the game has been resetted');
+function resetGame() {
+
+    resetButtonElement.blur();
+
+    // Reset all counters
+    currentIndex = 0;
+    sentencesCompleted = 0;
+    totalInputtedChars = 0;
+    totalCorrectCharsInputted = 0;
+
+    // Reset stats display
+    statsSentenceElement.textContent = 'Sentences Completed: ' + sentencesCompleted + '/' + sentences.length;
+    statsAccuracyElement.textContent = 'Accuracy: 0.0%';
+    statsWPMElement.textContent = 'WPM: 0';
+
+    // Reset sentences
+    unusedSentences = [...sentences];
+    currentSentence = getNextSentence();
+    displayChars = currentSentence.split("");
+    displayChars[0] = `<span class="underline">${displayChars[0]}</span>`;
+    pElement.innerHTML = displayChars.join("");
+
+    // Reset timer
+    timeLeft = totalTime;
+    timerEl.textContent = `Time: ${timeLeft.toFixed(1).padStart(4, "0")}`;
+
+    // Clear previous interval and start a new one
+    clearInterval(countdown);
+    startTimer();
 }
+
 
 
 
