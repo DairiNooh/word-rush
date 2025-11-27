@@ -26,7 +26,6 @@ let currentSentence = getNextSentence();
 let displayChars = currentSentence.split("");
 let totalInputtedChars = 0;
 let totalCorrectCharsInputted = 0;
-let difficulty = 'Easy';
 let requiredAccuracy = 60;
 let totalTime = 60.0;
 let timeLeft = totalTime;
@@ -44,7 +43,6 @@ function getNextSentence() {
 
     // Condition to check if there are no more unusedSentences just return
     if (unusedSentences.length == 0) {
-        console.log('all sentences used');
         return;
     }
 
@@ -233,17 +231,6 @@ function renderSentence() {
     // I used innerHTML because using textcontent will not interpret the span tag
     // it would jsut show the actual span tag syntax
     pElement.innerHTML = displayChars.join("");
-}
-
-// This function returns a random sentence from the sentences arrays
-function getRandomSentence() {
-    // Sets the current index to 0 since a new sentence will be retrived
-    currentIndex = 0;
-
-    // Math.random() generates a random number between 0 and 1 (can be float)
-    // Multiplying the random floar number with the length of the array
-    // we use Math.Floor() to make the final number a whole number
-    return sentences[Math.floor(Math.random() * sentences.length)];
 }
 
 function getAccuracy() {
